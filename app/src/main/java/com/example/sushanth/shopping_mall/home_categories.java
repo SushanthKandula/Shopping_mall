@@ -14,7 +14,7 @@ import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
-public class categories extends Activity {
+public class home_categories extends Activity {
 
 
 
@@ -23,13 +23,13 @@ public class categories extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         ExpandableListView expandableListView  = (ExpandableListView)findViewById(R.id.expandableListView);
-        ExpandableListAdapter expandableListAdapter;
+        ExpandableListAdapterHome expandableListAdapter;
         final List<String> expandableListTitle;
         final HashMap<String, List<String>> expandableListDetail;
 
-        expandableListDetail = ExpandableListDataPump.getData();
+        expandableListDetail = ExpandableListDataPumpHome.getData();
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
-        expandableListAdapter = new com.example.sushanth.shopping_mall.ExpandableListAdapter(this,expandableListTitle,expandableListDetail);
+        expandableListAdapter = new com.example.sushanth.shopping_mall.ExpandableListAdapterHome(this,expandableListTitle,expandableListDetail);
         //new ExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         //expandableListView.setAdapter(expandableListAdapter);
         expandableListView.setAdapter(expandableListAdapter);
@@ -67,7 +67,7 @@ public class categories extends Activity {
                                 childPosition), Toast.LENGTH_SHORT
                 )
                         .show();
-                Intent i=new Intent(categories.this,sub.class);
+                Intent i=new Intent(home_categories.this,subHome.class);
                 i.putExtra("list",groupPosition);
                 i.putExtra("sublist",childPosition);
 

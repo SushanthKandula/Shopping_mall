@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sub extends AppCompatActivity {
+public class subHome extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef ;
@@ -31,15 +31,16 @@ public class sub extends AppCompatActivity {
     TextView t1;
     int subpa,subch;
     String hellorey;
+    static String[][] hello = {{"Artifacts_Photo","Artifacts_Vases","Artifacts_Gifts","Artifacts_Statues"},{"Kitchen_Appl","Kitchen_Uten"},{"Home_LivSofas","Living_Lighting","Living_Carpets","Living_Tv","Living_Tables"},{"Dining_Furn","Dining_Crock"}};
 
-    static String[][] hello = {{"Women_Clothing","Women_Ethnic","Girls_Footwear","Women_Lingerie","Women_Nightwear","Women_Access","Women_Jewellry"},{"Men_Clothing","Men_Ethnic","Men_Footwear","Men_Inner","Men_Access"},{"Men_Clothing","Men_Access","Boys_Toys","Men_Footwear","Boys_Inner"},{"Women_Clothing","Women_Ethnic","Girls_Footwear","Girls_KidsEssentials","Women_Access","Girls_Toys","Girls_Inner","Women_Jewellry"},{"Kids_BabyCare","Kids_SoftToys","Kids_Access","Kids_Travel","Kids_Dolls"}};
+//    static String[][] hello = {{"Women_Clothing","Women_Ethnic","Women_Footwear","Women_Lingerie","Women_Nightwear","Women_Access","Women_Jewellry"},{"Men_Clothing","Men_Ethnic","Men_Footwear","Men_Inner","Men_Access"},{"Boys_Clothing","Boys_Access","Boys_Toys","Boys_Footwear","Boys_Inner"},{"Girls_Clothing","Girls_Ethnic","Girls_Footwear","Girls_KidsEssentials","Girls_Access","Girls_Toys","Girls_Inner","Girls_Jewellry"},{"Kids_BabyCare","Kids_SoftToys","Kids_Access","Kids_Travel","Kids_Dolls"}};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub);
         Bundle b=getIntent().getExtras();
-         subpa=b.getInt("list");
-         subch=b.getInt("sublist");
+        subpa=b.getInt("list");
+        subch=b.getInt("sublist");
         view = (Button) findViewById(R.id.view);
         recycle = (RecyclerView) findViewById(R.id.recycle);
 
@@ -60,7 +61,7 @@ public class sub extends AppCompatActivity {
                     String name = value.getDescription();
                     String address = value.getTitle();
                     String email = value.getImage();
-//                    Log.e("asvdgs",name);
+                    Log.e("asvdgs",name);
                     fire.setDescription(name);
                     fire.setImage(email);
                     fire.setTitle(address);
@@ -85,8 +86,8 @@ public class sub extends AppCompatActivity {
 
 
 
-                ViewHolder recyclerAdapter = new ViewHolder(list,sub.this);
-                RecyclerView.LayoutManager recyce = new GridLayoutManager(sub.this,2);
+                ViewHolder recyclerAdapter = new ViewHolder(list,subHome.this);
+                RecyclerView.LayoutManager recyce = new GridLayoutManager(subHome.this,2);
                 /// RecyclerView.LayoutManager recyce = new LinearLayoutManager(MainActivity.this);
                 // recycle.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
                 recycle.setLayoutManager(recyce);
@@ -103,3 +104,8 @@ public class sub extends AppCompatActivity {
 
     }
 }
+
+
+
+
+

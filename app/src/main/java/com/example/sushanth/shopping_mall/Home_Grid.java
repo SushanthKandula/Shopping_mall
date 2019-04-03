@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,9 +20,9 @@ import org.w3c.dom.Text;
 
 public class Home_Grid extends AppCompatActivity{
 
-    private String[] names={"FunZone","BoxOffice","FoodCourt","     Spa","Lifestyle"};
-    private Integer[] mThumbIds = {R.drawable.fun,
-            R.drawable.box,R.drawable.food,R.drawable.spa,R.drawable.lifestyle};
+    private String[] names={"FoodCourt","Lifestyle","Electronics","Sales","FunZone","BoxOffice","Mall Layout","Home"};
+    private Integer[] mThumbIds = {R.drawable.food,R.drawable.lifestyle,R.drawable.electronics,R.drawable.sales,R.drawable.fun,
+            R.drawable.box,R.drawable.layout,R.drawable.homecentre};
     ImageButton funzone,boxoffice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,13 @@ public class Home_Grid extends AppCompatActivity{
 
             }
         });
+//        stats.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i =new Intent(Home_Grid.this,StatsIntent.class);
+//                startActivity(i);
+//            }
+//        });
         //funzone=(ImageButton)findViewById(R.drawable.dice5);
     }
 

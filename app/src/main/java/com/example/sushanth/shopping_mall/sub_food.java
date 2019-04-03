@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sub extends AppCompatActivity {
+public class sub_food extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef ;
@@ -32,20 +32,19 @@ public class sub extends AppCompatActivity {
     int subpa,subch;
     String hellorey;
 
-    static String[][] hello = {{"Women_Clothing","Women_Ethnic","Girls_Footwear","Women_Lingerie","Women_Nightwear","Women_Access","Women_Jewellry"},{"Men_Clothing","Men_Ethnic","Men_Footwear","Men_Inner","Men_Access"},{"Men_Clothing","Men_Access","Boys_Toys","Men_Footwear","Boys_Inner"},{"Women_Clothing","Women_Ethnic","Girls_Footwear","Girls_KidsEssentials","Women_Access","Girls_Toys","Girls_Inner","Women_Jewellry"},{"Kids_BabyCare","Kids_SoftToys","Kids_Access","Kids_Travel","Kids_Dolls"}};
-    @Override
+    static String[][] hello3 = {{"North_Veg","South_Veg","Pizza_Veg","Desserts_Veg"},{"North_Non","South_Non","Pizza_Non","Desserts_Veg"}}; @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(R.layout.activity_sub_food);
         Bundle b=getIntent().getExtras();
-         subpa=b.getInt("list");
-         subch=b.getInt("sublist");
+        subpa=b.getInt("list");
+        subch=b.getInt("sublist");
         view = (Button) findViewById(R.id.view);
         recycle = (RecyclerView) findViewById(R.id.recycle);
 
         FirebaseApp.initializeApp(this);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference(hello[subpa][subch]);
+        myRef = database.getReference(hello3[subpa][subch]);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,8 +84,8 @@ public class sub extends AppCompatActivity {
 
 
 
-                ViewHolder recyclerAdapter = new ViewHolder(list,sub.this);
-                RecyclerView.LayoutManager recyce = new GridLayoutManager(sub.this,2);
+                ViewHolder recyclerAdapter = new ViewHolder(list,sub_food.this);
+                RecyclerView.LayoutManager recyce = new GridLayoutManager(sub_food.this,2);
                 /// RecyclerView.LayoutManager recyce = new LinearLayoutManager(MainActivity.this);
                 // recycle.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
                 recycle.setLayoutManager(recyce);
@@ -103,3 +102,7 @@ public class sub extends AppCompatActivity {
 
     }
 }
+
+
+
+///static String[][] hello3 = {{"North_Veg","South_Veg","Pizza_Veg","Desserts_Veg"},{"North_Non","South_Non","Pizza_Non","Desserts_Veg"}};

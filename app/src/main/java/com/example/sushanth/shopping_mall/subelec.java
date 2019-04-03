@@ -21,27 +21,27 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sub extends AppCompatActivity {
+public class subelec extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference myRef ;
-    List<Model> list;
+    List<ModelElec> list;
     RecyclerView recycle;
     Button view;
     TextView t1;
     int subpa,subch;
     String hellorey;
 
-    static String[][] hello = {{"Women_Clothing","Women_Ethnic","Girls_Footwear","Women_Lingerie","Women_Nightwear","Women_Access","Women_Jewellry"},{"Men_Clothing","Men_Ethnic","Men_Footwear","Men_Inner","Men_Access"},{"Men_Clothing","Men_Access","Boys_Toys","Men_Footwear","Boys_Inner"},{"Women_Clothing","Women_Ethnic","Girls_Footwear","Girls_KidsEssentials","Women_Access","Girls_Toys","Girls_Inner","Women_Jewellry"},{"Kids_BabyCare","Kids_SoftToys","Kids_Access","Kids_Travel","Kids_Dolls"}};
+    static String[][] hello = {{"Elec_PApple","Elec_Samsung","Women_Footwear","Women_Lingerie","Women_Nightwear"},{"Men_Clothing","Elec_AccSpeaker","Men_Footwear","Men_Inner"},{"Elec_lappyApple","Boys_Access","Elec_lappyDell","Boys_Footwear","Boys_Inner"},{"Elec_Sony","Kids_SoftToys","Kids_Access","Kids_Travel"}};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sub);
+        setContentView(R.layout.activity_subelec);
         Bundle b=getIntent().getExtras();
-         subpa=b.getInt("list");
-         subch=b.getInt("sublist");
-        view = (Button) findViewById(R.id.view);
-        recycle = (RecyclerView) findViewById(R.id.recycle);
+        subpa=b.getInt("list");
+        subch=b.getInt("sublist");
+        view = (Button) findViewById(R.id.view1);
+        recycle = (RecyclerView) findViewById(R.id.recycle1);
 
         FirebaseApp.initializeApp(this);
         database = FirebaseDatabase.getInstance();
@@ -52,15 +52,15 @@ public class sub extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                list = new ArrayList<Model>();
+                list = new ArrayList<ModelElec>();
                 for(DataSnapshot dataSnapshot1 :dataSnapshot.getChildren()){
 
-                    Model value = dataSnapshot1.getValue(Model.class);
-                    Model fire = new Model();
+                    ModelElec value = dataSnapshot1.getValue(ModelElec.class);
+                    ModelElec fire = new ModelElec();
                     String name = value.getDescription();
                     String address = value.getTitle();
                     String email = value.getImage();
-//                    Log.e("asvdgs",name);
+                    Log.e("asvdgs",name);
                     fire.setDescription(name);
                     fire.setImage(email);
                     fire.setTitle(address);
@@ -85,8 +85,8 @@ public class sub extends AppCompatActivity {
 
 
 
-                ViewHolder recyclerAdapter = new ViewHolder(list,sub.this);
-                RecyclerView.LayoutManager recyce = new GridLayoutManager(sub.this,2);
+                ViewHolderElec recyclerAdapter = new ViewHolderElec(list,subelec.this);
+                RecyclerView.LayoutManager recyce = new GridLayoutManager(subelec.this,2);
                 /// RecyclerView.LayoutManager recyce = new LinearLayoutManager(MainActivity.this);
                 // recycle.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
                 recycle.setLayoutManager(recyce);

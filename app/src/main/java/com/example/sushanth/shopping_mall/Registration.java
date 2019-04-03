@@ -49,7 +49,9 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
+//public Registration(Context context){
+//
+//}
     @Override
     public void onClick(View v) {
 
@@ -123,4 +125,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
+   public String validate(String Email, String Phone) {
+        if(Email.matches(emailpattern) && Phone.length()==10)
+            return "Registration was successful";
+        else
+            return "Invalid email or phone!";
+    }
 }
